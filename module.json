@@ -2,9 +2,9 @@
     "name": "Blog",
     "alias": "blog",
     "type": "composer",
-    "description": "",
+    "description": "Blog module for OCMS",
     "keywords": [],
-    "priority": 0,
+    "priority": 6,
     "providers": [
         "Modules\\Blog\\Providers\\BlogServiceProvider"
     ],
