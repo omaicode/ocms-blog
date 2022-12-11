@@ -23,6 +23,11 @@ class CategoryController extends FormBuilderController
 
     public function __construct(Request $request)
     {
+        $this->middleware('can:blog.categories.view', ['index']);
+        $this->middleware('can:blog.categories.edit', ['edit', 'update']);
+        $this->middleware('can:blog.categories.create', ['create', 'store']);
+        $this->middleware('can:blog.categories.delete', ['deletes']);
+
         $this->request = $request;
         $this->breadcrumb[] = [
             'title'  => __('blog::messages.categories'), 

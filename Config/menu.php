@@ -8,6 +8,7 @@ return [
         'name' => 'blog::messages.blog',
         'icon' => 'fas fa-newspaper',
         'url' => '#',
+        'permissions' => ['blog.view'],
     ],
     [
         'id' => 'ocms-menu-blog-post',
@@ -15,6 +16,7 @@ return [
         'parent_id' => 'ocms-menu-blog',
         'name' => 'blog::messages.posts',
         'url' => route('admin.blog.posts.index'),
+        'permissions' => ['blog.categories.view'],
     ],
     [
         'id' => 'ocms-menu-blog-categories',
@@ -22,5 +24,6 @@ return [
         'parent_id' => 'ocms-menu-blog',
         'name' => 'blog::messages.categories',
         'url' => route('admin.blog.categories.index'),
+        'permissions' => ['blog.posts.view'],
     ],
 ];

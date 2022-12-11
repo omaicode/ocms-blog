@@ -23,6 +23,11 @@ class PostController extends FormBuilderController
 
     public function __construct(Request $request)
     {
+        $this->middleware('can:blog.posts.view', ['index']);
+        $this->middleware('can:blog.posts.edit', ['edit', 'update']);
+        $this->middleware('can:blog.posts.create', ['create', 'store']);
+        $this->middleware('can:blog.posts.delete', ['deletes']);
+
         $this->request = $request;
         $this->breadcrumb[] = [
             'title'  => __('blog::messages.posts'), 
