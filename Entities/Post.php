@@ -3,9 +3,7 @@
 namespace Modules\Blog\Entities;
 
 use Illuminate\Database\Eloquent\Model;
-use Modules\Media\Entities\UploadSession;
 use Modules\Media\Interfaces\HasMedia;
-use Modules\Media\MediaCollections\Models\Media;
 use Modules\Media\Traits\InteractsWithMedia;
 use Omaicode\Repository\Contracts\Transformable;
 use Omaicode\Repository\Traits\TransformableTrait;
@@ -48,20 +46,16 @@ class Post extends Model implements Transformable, HasMedia
         'short_description'
     ];
 
-    public function registerMediaCollections(): void
+    public function registerMediaSavePath(): void
     {
         $this
-        ->addMediaCollection('default')
+        ->setMediaSavePath('post')
         ->useFallbackUrl(rtrim(config('app.url', 'http://localhost'), '/').'/images/default-theme.png');
     }
 
     public function getImageUrlAttribute()
     {
-        $media = $this->getMediaRepository()->getByUuids([$this->featured_image])->first();
-        if($media) {
-            return $media->getFullUrl();
-        }   
-        return null;
+        return $this->getMediaUrl('featured_image');
     }
 
     public function getShortDescriptionAttribute()
