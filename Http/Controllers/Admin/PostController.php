@@ -52,7 +52,7 @@ class PostController extends FormBuilderController
         $form->slug('title', 'slug', __('blog::messages.title'))
               ->creationRules('required|unique:blog_posts,slug')
               ->updateRules('required|unique:blog_posts,slug,{{id}},id');
-        $form->ckeditor('content', __('blog::messages.content'));
+        $form->quillEditor('content', __('blog::messages.content'));
         $form->text('seo_title', __('blog::messages.seo_title'));
         $form->textarea('seo_description', __('blog::messages.seo_description'))->rows(2);
 
