@@ -66,4 +66,9 @@ class Post extends Model implements Transformable, HasMedia
 
         return substr(strip_tags($this->content), 0, 99).'...';
     }
+
+    public function category()
+    {
+      return $this->belongsTo(Category::class, 'category_id', 'id');
+    }
 }

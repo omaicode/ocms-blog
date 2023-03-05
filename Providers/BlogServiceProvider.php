@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Event;
 use Illuminate\Routing\Events\RouteMatched;
 
 use Email;
+use Illuminate\Pagination\Paginator;
 use Menu;
 
 class BlogServiceProvider extends ServiceProvider
@@ -30,6 +31,7 @@ class BlogServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Paginator::useBootstrap();
         $this->registerTranslations();
         $this->registerConfig();
         $this->registerViews();
